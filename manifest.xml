@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+    xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+    xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+    xsi:type="TaskPaneApp">
+
+  <Id>b4f2c1a0-7e5d-4a3b-9c1e-2f6a8d0e3b5c</Id>
+  <Version>2.0.0.0</Version>
+  <ProviderName>abdurrahmanky51-lang</ProviderName>
+  <DefaultLocale>tr-TR</DefaultLocale>
+  <DisplayName DefaultValue="Excel AI Asistanı"/>
+  <Description DefaultValue="Formül önerileri, hata düzeltme, tablo ve grafik önerileri sunan ücretsiz yapay zeka asistanı"/>
+  <IconUrl DefaultValue="https://abdurrahmanky51-lang.github.io/excel-ai-addin/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://abdurrahmanky51-lang.github.io/excel-ai-addin/assets/icon-80.png"/>
+  <SupportUrl DefaultValue="https://abdurrahmanky51-lang.github.io/excel-ai-addin/"/>
+
+  <AppDomains>
+    <AppDomain>https://js.puter.com</AppDomain>
+    <AppDomain>https://api.puter.com</AppDomain>
+    <AppDomain>https://puter.com</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Workbook"/>
+  </Hosts>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://abdurrahmanky51-lang.github.io/excel-ai-addin/taskpane.html"/>
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="AiAssistant.Group">
+                <Label resid="AiAssistant.GroupLabel"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16"/>
+                  <bt:Image size="32" resid="Icon.32x32"/>
+                  <bt:Image size="80" resid="Icon.80x80"/>
+                </Icon>
+                <Control xsi:type="Button" id="AiAssistant.TaskpaneButton">
+                  <Label resid="AiAssistant.TaskpaneButton.Label"/>
+                  <Supertip>
+                    <Title resid="AiAssistant.TaskpaneButton.Label"/>
+                    <Description resid="AiAssistant.TaskpaneButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>AiAssistant.Taskpane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://abdurrahmanky51-lang.github.io/excel-ai-addin/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://abdurrahmanky51-lang.github.io/excel-ai-addin/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://abdurrahmanky51-lang.github.io/excel-ai-addin/assets/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="https://abdurrahmanky51-lang.github.io/excel-ai-addin/taskpane.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://abdurrahmanky51-lang.github.io/excel-ai-addin/taskpane.html"/>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://abdurrahmanky51-lang.github.io/excel-ai-addin/"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="Excel AI Asistanı eklendi!"/>
+        <bt:String id="AiAssistant.GroupLabel" DefaultValue="AI Asistan"/>
+        <bt:String id="AiAssistant.TaskpaneButton.Label" DefaultValue="AI Asistanı Aç"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Formül, tablo ve grafik önerileri için şeridin sağ üstünden AI Asistanı açabilirsiniz."/>
+        <bt:String id="AiAssistant.TaskpaneButton.Tooltip" DefaultValue="Yapay zeka destekli formül, tablo ve grafik yardımcısını açar"/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

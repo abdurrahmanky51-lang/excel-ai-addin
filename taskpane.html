@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <title>Excel AI Asistanı</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script src="https://js.puter.com/v2/"></script>
+  <link rel="stylesheet" href="taskpane.css" />
+</head>
+<body>
+  <div id="app" class="hidden">
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="dot"></span>
+        <h1>Excel AI Asistanı</h1>
+      </div>
+      <button id="infoBtn" class="icon-btn" title="Bilgi">ⓘ</button>
+    </header>
+
+    <!-- BİLGİ PANELİ -->
+    <section id="infoPanel" class="panel hidden">
+      <h2>Nasıl çalışır?</h2>
+      <p class="hint">
+        Bu eklenti tamamen ücretsiz ve sınırsızdır. Herhangi bir API anahtarı
+        girmene gerek yok. İlk AI işlemini çalıştırdığında Puter.com
+        tarafından ücretsiz, tek seferlik bir giriş penceresi açılabilir
+        (sadece e-posta ile, kart bilgisi istemez) — bu adımdan sonra bir
+        daha karşına çıkmaz.
+      </p>
+      <button id="closeInfoBtn" class="primary-btn">Anladım</button>
+    </section>
+
+    <!-- SEKME MENÜSÜ -->
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="formula">Formül</button>
+      <button class="tab-btn" data-tab="fix">Hata Bul</button>
+      <button class="tab-btn" data-tab="table">Tablo</button>
+      <button class="tab-btn" data-tab="chart">Grafik</button>
+      <button class="tab-btn" data-tab="ask">Soru Sor</button>
+    </nav>
+
+    <main class="content">
+
+      <!-- FORMÜL ÖNERİ -->
+      <section id="tab-formula" class="tab-panel active">
+        <p class="desc">Ne yapmak istediğini yaz, seçili hücreye uygun Excel formülünü önereyim.</p>
+        <textarea id="formulaGoal" rows="3" placeholder="Örn: B2:B20 aralığında 100'den büyük olan satışların toplamını al"></textarea>
+        <button id="formulaBtn" class="primary-btn">Formül Öner</button>
+        <div id="formulaResult" class="result hidden"></div>
+      </section>
+
+      <!-- HATA BULMA -->
+      <section id="tab-fix" class="tab-panel">
+        <p class="desc">Bir aralık seç, seçimindeki formülleri ve hataları (#REF!, #VALUE! vb.) inceleyip düzeltme önerisi vereyim.</p>
+        <button id="fixBtn" class="primary-btn">Seçimi Kontrol Et</button>
+        <div id="fixResult" class="result hidden"></div>
+      </section>
+
+      <!-- TABLO -->
+      <section id="tab-table" class="tab-panel">
+        <p class="desc">Bir veri aralığı seç, profesyonel görünümlü bir Excel tablosuna çevireyim ve stil önereyim.</p>
+        <button id="tableBtn" class="primary-btn">Seçimi Tabloya Çevir</button>
+        <div id="tableResult" class="result hidden"></div>
+      </section>
+
+      <!-- GRAFİK -->
+      <section id="tab-chart" class="tab-panel">
+        <p class="desc">Bir veri aralığı seç, verine en uygun grafik türünü önereyim ve oluşturayım.</p>
+        <button id="chartBtn" class="primary-btn">Grafik Öner ve Oluştur</button>
+        <div id="chartResult" class="result hidden"></div>
+      </section>
+
+      <!-- SERBEST SORU -->
+      <section id="tab-ask" class="tab-panel">
+        <p class="desc">Excel ile ilgili aklına takılan her şeyi sorabilirsin. Seçili hücrelerin verisi otomatik olarak bağlam olarak eklenir.</p>
+        <textarea id="askInput" rows="3" placeholder="Örn: DÜŞEYARA yerine hangi fonksiyonu kullanmalıyım?"></textarea>
+        <button id="askBtn" class="primary-btn">Sor</button>
+        <div id="askResult" class="result hidden"></div>
+      </section>
+
+    </main>
+
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <span>Yapay zeka düşünüyor...</span>
+    </div>
+
+  </div>
+
+  <script src="taskpane.js"></script>
+</body>
+</html>
